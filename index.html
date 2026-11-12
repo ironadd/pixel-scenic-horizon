@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>山海晴岚 · 像素风景线 | Three.js Voxel Scenic Horizon</title>
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+<body>
+  <div id="canvas-wrap">
+    <canvas id="scene-canvas"></canvas>
+  </div>
+
+  <!-- Loading Overlay -->
+  <div id="loading-screen">
+    <div class="loader-card">
+      <div class="pixel-sun-icon"></div>
+      <h1>山海晴岚 · 像素风景线</h1>
+      <p id="loading-text">正在堆叠山海体素方块与跨海铁道...</p>
+    </div>
+  </div>
+
+  <!-- Top-Left Scenic Title & Live Status -->
+  <header id="hud-top" class="hud-panel">
+    <div class="brand-badge">
+      <span class="badge-dot"></span>
+      <div>
+        <div class="brand-title">山海晴岚 · 像素风景线</div>
+        <div class="brand-sub">
+          <span id="clock-display">11:15</span> ·
+          <span id="mood-label">碧海晴岚</span> ·
+          <span id="voxel-count">0</span> 方块
+        </div>
+      </div>
+    </div>
+
+    <div class="top-actions">
+      <button id="btn-pixel-mode" class="chip-btn" title="切换像素渲染风格 (P)">
+        👾 画风：精致体素
+      </button>
+      <button id="btn-audio" class="chip-btn" title="开启/关闭海浪与治愈轻音 (M)">
+        🎵 海浪轻音：关
+      </button>
+      <button id="btn-shot" class="chip-btn" title="保存当前风景明信片截图">
+        📷 明信片留影
+      </button>
+      <button id="btn-hide-ui" class="chip-btn" title="纯净壁纸模式 (按 H 键切换)">
+        🖼️ 纯净壁纸 (H)
+      </button>
+    </div>
+  </header>
+
+  <!-- Free-Fly Hint Pill (shown only in WASD mode) -->
+  <div id="fly-hint" class="hidden">
+    🦅 自由漫游：鼠标拖拽转向 · <b>WASD</b> 移动 · <b>Space / Shift</b> 升降 · 滚轮变速
+  </div>
+
+  <!-- Pure Wallpaper Restore Hint -->
+  <div id="wallpaper-hint" class="hidden">
+    已进入纯净风景壁纸模式 · 按 <b>H</b> 键或点击右上角恢复面板
+  </div>
+  <button id="btn-restore-ui" class="hidden" title="显示控制面板 (H)">✦ 显示面板</button>
+
+  <!-- Bottom Floating Control Dock -->
+  <footer id="hud-bottom" class="hud-panel">
+    <!-- Mood / Time-of-Day Presets -->
+    <div class="dock-group">
+      <span class="group-tag">四时晴岚</span>
+      <button class="dock-btn mood-btn" data-mood="dawn">🌸 春樱朝雾</button>
+      <button class="dock-btn mood-btn active" data-mood="noon">☀️ 碧海晴岚</button>
+      <button class="dock-btn mood-btn" data-mood="sunset">🌇 橘海落日</button>
+      <button class="dock-btn mood-btn" data-mood="night">🌌 星海渔火</button>
+    </div>
+
+    <div class="dock-divider"></div>
+
+    <!-- Continuous Time Slider & Auto-Cycle -->
+    <div class="dock-group time-slider-group">
+      <button id="btn-auto-time" class="icon-btn" title="开启/暂停昼夜自动流转">⏱️</button>
+      <input id="time-slider" type="range" min="0" max="24" step="0.02" value="11.25" />
+    </div>
+
+    <div class="dock-divider"></div>
+
+    <!-- Scenic Camera Modes -->
+    <div class="dock-group">
+      <span class="group-tag">观景视角</span>
+      <button class="dock-btn cam-btn active" data-cam="panorama">🖼️ 全景长卷</button>
+      <button class="dock-btn cam-btn" data-cam="train">🚂 搭乘列车</button>
+      <button class="dock-btn cam-btn" data-cam="harbor">⛵ 碧海巡航</button>
+      <button class="dock-btn cam-btn" data-cam="free">🦅 自由飞行</button>
+    </div>
+  </footer>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
